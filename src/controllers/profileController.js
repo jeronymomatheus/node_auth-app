@@ -47,6 +47,7 @@ async function updatePassword(req, res) {
 
   await profileService.changePassword(req.user, input.password);
   req.session.tokenVersion = req.user.tokenVersion; // keeps this session
+
   sessionUtils.setFlash(
     req,
     'success',
@@ -81,6 +82,7 @@ async function updateEmail(req, res) {
   }
 
   await profileService.changeEmail(req.user, input.email);
+
   sessionUtils.setFlash(
     req,
     'success',

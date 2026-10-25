@@ -9,6 +9,7 @@ async function create(userId, type, ttl) {
 
   await Token.destroy({ where: { expiresAt: { [Op.lt]: new Date() } } });
   await Token.destroy({ where: { userId, type } });
+
   await Token.create({
     userId,
     type,

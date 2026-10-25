@@ -39,6 +39,7 @@ async function resendActivation(req, res) {
   const email = fields.normEmail((req.body || {}).email);
 
   await authService.resendActivation(email);
+
   sessionUtils.setFlash(
     req,
     'info',
@@ -57,6 +58,7 @@ async function activate(req, res) {
   }
 
   await sessionUtils.startSession(req, user);
+
   sessionUtils.setFlash(
     req,
     'success',

@@ -9,6 +9,7 @@ const asyncHandler = require('../utils/asyncHandler');
 const router = express.Router();
 
 router.get('/register', guards.guestOnly, authController.showRegister);
+
 router.post(
   '/register',
   guards.guestOnly,
@@ -16,12 +17,14 @@ router.post(
   asyncHandler(authController.register),
 );
 router.get('/register/sent', guards.guestOnly, authController.registerSent);
+
 router.post(
   '/resend-activation',
   guards.guestOnly,
   rateLimit.authLimiter,
   asyncHandler(authController.resendActivation),
 );
+
 router.get(
   '/activate/:token',
   guards.guestOnly,
@@ -29,6 +32,7 @@ router.get(
 );
 
 router.get('/login', guards.guestOnly, authController.showLogin);
+
 router.post(
   '/login',
   guards.guestOnly,

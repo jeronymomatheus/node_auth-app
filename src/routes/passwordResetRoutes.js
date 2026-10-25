@@ -9,6 +9,7 @@ const asyncHandler = require('../utils/asyncHandler');
 const router = express.Router();
 
 router.get('/password-reset', guards.guestOnly, controller.showRequest);
+
 router.post(
   '/password-reset',
   guards.guestOnly,
@@ -17,11 +18,13 @@ router.post(
 );
 router.get('/password-reset/sent', guards.guestOnly, controller.sent);
 router.get('/password-reset/success', guards.guestOnly, controller.success);
+
 router.get(
   '/password-reset/:token',
   guards.guestOnly,
   asyncHandler(controller.showForm),
 );
+
 router.post(
   '/password-reset/:token',
   guards.guestOnly,
